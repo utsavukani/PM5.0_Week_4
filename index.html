@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoomieMatch - Find Your Perfect College Roommate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Screen 1: Welcome/Onboarding -->
+        <div id="welcome-screen" class="screen active">
+            <div class="screen-content">
+                <div class="logo-section">
+                    <div class="app-logo">📱</div>
+                    <h1>RoomieMatch</h1>
+                </div>
+                
+                <div class="welcome-content">
+                    <h2>Find Your Perfect College Roommate</h2>
+                    <p class="subtitle">Smart matching based on lifestyle compatibility</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🛡️</div>
+                            <span>Safe & Verified</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🤖</div>
+                            <span>AI Matching</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">⚡</div>
+                            <span>Easy Setup</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="welcome-actions">
+                    <button class="btn btn--primary btn--full-width" onclick="navigateToScreen('signup-screen')">
+                        Get Started
+                    </button>
+                    <a href="#" class="signin-link" onclick="navigateToScreen('signin-screen')">
+                        Already have account? Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 2: Account Creation -->
+        <div id="signup-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('welcome-screen')">←</button>
+                    <h2>Create Account</h2>
+                </div>
+                
+                <form class="signup-form">
+                    <div class="form-group">
+                        <label class="form-label">University Email</label>
+                        <input type="email" class="form-control" placeholder="name@university.edu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">University</label>
+                        <select class="form-control" required>
+                            <option value="">Select your university</option>
+                            <option value="boston">Boston University</option>
+                            <option value="northeastern">Northeastern University</option>
+                            <option value="harvard">Harvard University</option>
+                            <option value="mit">MIT</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            I agree to the Terms of Service and Privacy Policy
+                        </label>
+                    </div>
+                    
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="navigateToScreen('profile-basic-screen')">
+                        Create Account
+                    </button>
+                    
+                    <div class="verification-notice">
+                        <p>📧 We'll send a verification email to confirm your account</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Screen 3: Profile Creation - Basic Info -->
+        <div id="profile-basic-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('signup-screen')">←</button>
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 33%"></div>
+                        </div>
+                        <span class="progress-text">Step 1 of 3</span>
+                    </div>
+                </div>
+                
+                <h2>Basic Information</h2>
+                
+                <div class="profile-photo-section">
+                    <div class="photo-upload-circle">
+                        <span class="photo-placeholder">📷</span>
+                        <input type="file" id="profile-photo" accept="image/*" style="display: none;">
+                    </div>
+                    <button class="photo-upload-btn" onclick="document.getElementById('profile-photo').click()">
+                        Add Photo
+                    </button>
+                </div>
+                
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Class Year</label>
+                        <select class="form-control" required>
+                            <option value="">Select class year</option>
+                            <option value="freshman">Freshman (2028)</option>
+                            <option value="sophomore">Sophomore (2027)</option>
+                            <option value="junior">Junior (2026)</option>
+                            <option value="senior">Senior (2025)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Major</label>
+                        <select class="form-control" required>
+                            <option value="">Select your major</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <option value="psychology">Psychology</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="biology">Biology</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Housing Preference</label>
+                        <div class="toggle-group">
+                            <button type="button" class="toggle-btn active" data-value="on-campus">On-Campus</button>
+                            <button type="button" class="toggle-btn" data-value="off-campus">Off-Campus</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Bio (Optional)</label>
+                        <textarea class="form-control" rows="3" placeholder="Tell others about yourself..."></textarea>
+                    </div>
+                    
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="navigateToScreen('profile-lifestyle-screen')">
+                        Continue
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Screen 4: Profile Creation - Lifestyle -->
+        <div id="profile-lifestyle-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('profile-basic-screen')">←</button>
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 66%"></div>
+                        </div>
+                        <span class="progress-text">Step 2 of 3</span>
+                    </div>
+                </div>
+                
+                <h2>Lifestyle Preferences</h2>
+                
+                <div class="lifestyle-form">
+                    <div class="slider-group">
+                        <label class="slider-label">
+                            <span class="slider-icon">🌙</span>
+                            Sleep Schedule
+                            <span class="slider-icon">☀️</span>
+                        </label>
+                        <input type="range" class="lifestyle-slider" min="0" max="100" value="50">
+                        <div class="slider-labels">
+                            <span>Night Owl</span>
+                            <span>Early Bird</span>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label class="slider-label">
+                            <span class="slider-icon">🗑️</span>
+                            Cleanliness
+                            <span class="slider-icon">✨</span>
+                        </label>
+                        <input type="range" class="lifestyle-slider" min="0" max="100" value="75">
+                        <div class="slider-labels">
+                            <span>Messy</span>
+                            <span>Organized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label class="slider-label">
+                            <span class="slider-icon">🔇</span>
+                            Study Environment
+                            <span class="slider-icon">🔊</span>
+                        </label>
+                        <input type="range" class="lifestyle-slider" min="0" max="100" value="25">
+                        <div class="slider-labels">
+                            <span>Quiet</span>
+                            <span>Background Noise OK</span>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label class="slider-label">
+                            <span class="slider-icon">🏠</span>
+                            Social Level
+                            <span class="slider-icon">🎉</span>
+                        </label>
+                        <input type="range" class="lifestyle-slider" min="0" max="100" value="60">
+                        <div class="slider-labels">
+                            <span>Introvert</span>
+                            <span>Extrovert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="radio-group">
+                        <label class="form-label">Guest Frequency</label>
+                        <div class="radio-options">
+                            <label class="radio-container">
+                                <input type="radio" name="guests" value="rarely">
+                                <span class="radio-checkmark"></span>
+                                Rarely have guests over
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="guests" value="occasionally">
+                                <span class="radio-checkmark"></span>
+                                Occasionally have friends over
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="guests" value="frequently">
+                                <span class="radio-checkmark"></span>
+                                Frequently host gatherings
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="navigateToScreen('profile-preferences-screen')">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 5: Profile Creation - Preferences -->
+        <div id="profile-preferences-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('profile-lifestyle-screen')">←</button>
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-text">Step 3 of 3</span>
+                    </div>
+                </div>
+                
+                <h2>Roommate Preferences</h2>
+                
+                <div class="preferences-form">
+                    <div class="form-group">
+                        <label class="form-label">Looking for roommate who:</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Similar study schedule
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Enjoys social activities
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Keeps shared spaces clean
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Respects quiet hours
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Similar sleep schedule
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Open to new experiences
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Deal Breakers (Optional)</label>
+                        <textarea class="form-control" rows="3" placeholder="Any absolute no-nos..."></textarea>
+                    </div>
+                    
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="navigateToScreen('dashboard-screen')">
+                        Complete Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: Match Dashboard -->
+        <div id="dashboard-screen" class="screen">
+            <div class="screen-content">
+                <div class="dashboard-header">
+                    <h2>Your Matches</h2>
+                    <div class="header-actions">
+                        <button class="icon-btn">🔍</button>
+                        <button class="icon-btn" onclick="navigateToScreen('profile-settings-screen')">👤</button>
+                    </div>
+                </div>
+                
+                <div class="compatibility-summary">
+                    <div class="summary-card">
+                        <h3>Profile Complete</h3>
+                        <p>3 high-compatibility matches found</p>
+                    </div>
+                </div>
+                
+                <div class="matches-list">
+                    <div class="match-card" onclick="setSelectedMatch(0); navigateToScreen('profile-view-screen')">
+                        <div class="match-photo">👩‍🎓</div>
+                        <div class="match-info">
+                            <h4>Sarah Chen</h4>
+                            <p>Engineering • Freshman</p>
+                            <div class="match-traits">
+                                <span class="trait-tag">Early riser</span>
+                                <span class="trait-tag">Clean</span>
+                                <span class="trait-tag">Quiet study</span>
+                            </div>
+                        </div>
+                        <div class="match-compatibility">
+                            <div class="compatibility-score">92%</div>
+                            <div class="match-actions">
+                                <button class="btn btn--sm btn--outline" onclick="event.stopPropagation(); setSelectedMatch(0); navigateToScreen('profile-view-screen')">View</button>
+                                <button class="btn btn--sm btn--primary" onclick="event.stopPropagation(); setSelectedMatch(0); navigateToScreen('messaging-screen')">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-card" onclick="setSelectedMatch(1); navigateToScreen('profile-view-screen')">
+                        <div class="match-photo">👨‍🎓</div>
+                        <div class="match-info">
+                            <h4>Marcus Johnson</h4>
+                            <p>Business • Sophomore</p>
+                            <div class="match-traits">
+                                <span class="trait-tag">Social</span>
+                                <span class="trait-tag">Night owl</span>
+                                <span class="trait-tag">Group study</span>
+                            </div>
+                        </div>
+                        <div class="match-compatibility">
+                            <div class="compatibility-score">78%</div>
+                            <div class="match-actions">
+                                <button class="btn btn--sm btn--outline" onclick="event.stopPropagation(); setSelectedMatch(1); navigateToScreen('profile-view-screen')">View</button>
+                                <button class="btn btn--sm btn--primary" onclick="event.stopPropagation(); setSelectedMatch(1); navigateToScreen('messaging-screen')">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-card" onclick="setSelectedMatch(2); navigateToScreen('profile-view-screen')">
+                        <div class="match-photo">👩‍🎓</div>
+                        <div class="match-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Psychology • Junior</p>
+                            <div class="match-traits">
+                                <span class="trait-tag">Organized</span>
+                                <span class="trait-tag">Balanced</span>
+                                <span class="trait-tag">Respectful</span>
+                            </div>
+                        </div>
+                        <div class="match-compatibility">
+                            <div class="compatibility-score">95%</div>
+                            <div class="match-actions">
+                                <button class="btn btn--sm btn--outline" onclick="event.stopPropagation(); setSelectedMatch(2); navigateToScreen('profile-view-screen')">View</button>
+                                <button class="btn btn--sm btn--primary" onclick="event.stopPropagation(); setSelectedMatch(2); navigateToScreen('messaging-screen')">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 7: Messaging Interface -->
+        <div id="messaging-screen" class="screen">
+            <div class="screen-content">
+                <div class="chat-header">
+                    <button class="back-btn" onclick="navigateToScreen('dashboard-screen')">←</button>
+                    <div class="chat-info">
+                        <h3 id="chat-partner-name">Sarah Chen</h3>
+                        <span id="chat-compatibility">92% compatible</span>
+                    </div>
+                    <button class="icon-btn">⚙️</button>
+                </div>
+                
+                <div class="conversation-starters">
+                    <p>Start the conversation:</p>
+                    <div class="starter-buttons">
+                        <button class="starter-btn" onclick="sendMessage('Hi! I saw we have a high compatibility score. Would love to chat about potentially being roommates!')">
+                            "Hi! Great compatibility score!"
+                        </button>
+                        <button class="starter-btn" onclick="sendMessage('Hey! I noticed we both prefer similar study environments. Want to learn more about each other?')">
+                            "Similar study preferences!"
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="message-thread" id="message-thread">
+                    <div class="message-date">Today</div>
+                </div>
+                
+                <div class="message-input-area">
+                    <div class="message-input-container">
+                        <input type="text" class="message-input" placeholder="Type a message..." id="message-input">
+                        <button class="send-btn" onclick="sendUserMessage()">Send</button>
+                    </div>
+                </div>
+                
+                <div class="safety-reminder">
+                    <p>🛡️ Remember to keep conversations respectful and report any inappropriate behavior</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 8: Profile View -->
+        <div id="profile-view-screen" class="screen">
+            <div class="screen-content">
+                <div class="profile-header">
+                    <button class="back-btn" onclick="navigateToScreen('dashboard-screen')">←</button>
+                    <div class="profile-photo-large">👩‍🎓</div>
+                </div>
+                
+                <div class="profile-details">
+                    <h2 id="profile-name">Sarah Chen</h2>
+                    <p id="profile-info">18 • Engineering • Boston University</p>
+                    
+                    <div class="compatibility-breakdown">
+                        <h3>Compatibility Breakdown</h3>
+                        <div class="compatibility-item">
+                            <span>Sleep Schedule</span>
+                            <div class="compatibility-bar">
+                                <div class="compatibility-fill" style="width: 95%"></div>
+                            </div>
+                            <span>95%</span>
+                        </div>
+                        <div class="compatibility-item">
+                            <span>Cleanliness</span>
+                            <div class="compatibility-bar">
+                                <div class="compatibility-fill" style="width: 90%"></div>
+                            </div>
+                            <span>90%</span>
+                        </div>
+                        <div class="compatibility-item">
+                            <span>Study Environment</span>
+                            <div class="compatibility-bar">
+                                <div class="compatibility-fill" style="width: 88%"></div>
+                            </div>
+                            <span>88%</span>
+                        </div>
+                        <div class="compatibility-item">
+                            <span>Social Level</span>
+                            <div class="compatibility-bar">
+                                <div class="compatibility-fill" style="width: 92%"></div>
+                            </div>
+                            <span>92%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="lifestyle-preferences">
+                        <h3>Lifestyle Preferences</h3>
+                        <div class="preference-grid">
+                            <div class="preference-item">
+                                <span class="preference-icon">☀️</span>
+                                <span>Early Bird</span>
+                            </div>
+                            <div class="preference-item">
+                                <span class="preference-icon">✨</span>
+                                <span>Very Clean</span>
+                            </div>
+                            <div class="preference-item">
+                                <span class="preference-icon">🔇</span>
+                                <span>Quiet Study</span>
+                            </div>
+                            <div class="preference-item">
+                                <span class="preference-icon">🏠</span>
+                                <span>Balanced Social</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bio-section">
+                        <h3>About Me</h3>
+                        <p id="profile-bio">Engineering student who loves problem-solving and staying organized. Looking for a responsible roommate who respects study time and keeps shared spaces clean. Enjoy morning workouts and quiet evenings.</p>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button class="btn btn--primary btn--full-width" onclick="setSelectedMatch(getCurrentMatch()); navigateToScreen('messaging-screen')">
+                            Message Sarah
+                        </button>
+                        <button class="btn btn--outline btn--full-width" onclick="navigateToScreen('match-confirmation-screen')">
+                            Want to be roommates!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 9: Match Confirmation -->
+        <div id="match-confirmation-screen" class="screen">
+            <div class="screen-content">
+                <div class="confirmation-header">
+                    <div class="success-icon">🎉</div>
+                    <h2>You both want to be roommates!</h2>
+                </div>
+                
+                <div class="matched-profiles">
+                    <div class="matched-profile">
+                        <div class="profile-photo">👤</div>
+                        <span>You</span>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="matched-profile">
+                        <div class="profile-photo">👩‍🎓</div>
+                        <span id="matched-partner-name">Sarah Chen</span>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h3>Next Steps</h3>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <span>Browse available housing options together</span>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <span>Submit joint housing application</span>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <span>Coordinate move-in details</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="confirmation-actions">
+                    <button class="btn btn--primary btn--full-width" onclick="navigateToScreen('housing-resources-screen')">
+                        Continue to Housing Resources
+                    </button>
+                    <button class="btn btn--outline btn--full-width" onclick="setSelectedMatch(getCurrentMatch()); navigateToScreen('messaging-screen')">
+                        Message Your New Roommate
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Screen: Housing Resources (referenced in confirmation) -->
+        <div id="housing-resources-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('match-confirmation-screen')">←</button>
+                    <h2>Housing Resources</h2>
+                </div>
+                
+                <div class="resources-content">
+                    <div class="resource-card">
+                        <h3>University Housing Portal</h3>
+                        <p>Browse on-campus housing options and submit applications</p>
+                        <button class="btn btn--primary" onclick="window.open('https://housing.university.edu', '_blank')">
+                            Visit Portal
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Off-Campus Housing</h3>
+                        <p>Find apartments and houses near campus</p>
+                        <button class="btn btn--outline" onclick="window.open('https://offcampus.university.edu', '_blank')">
+                            Browse Listings
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Roommate Agreement Template</h3>
+                        <p>Download a template to set expectations together</p>
+                        <button class="btn btn--outline">Download Template</button>
+                    </div>
+                </div>
+                
+                <button class="btn btn--secondary btn--full-width" onclick="navigateToScreen('dashboard-screen')">
+                    Back to Dashboard
+                </button>
+            </div>
+        </div>
+
+        <!-- Sign In Screen (referenced from welcome) -->
+        <div id="signin-screen" class="screen">
+            <div class="screen-content">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="navigateToScreen('welcome-screen')">←</button>
+                    <h2>Sign In</h2>
+                </div>
+                
+                <form class="signin-form">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="name@university.edu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter password" required>
+                    </div>
+                    
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="navigateToScreen('dashboard-screen')">
+                        Sign In
+                    </button>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
